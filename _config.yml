@@ -23,7 +23,7 @@ email: miklb@miklb.com
 description: >- # this means to ignore newlines until "baseurl:"
   Starter repo for using GitHub Pages with Jekyll IndieWeb theme
 baseurl: "/steal-this-repo" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://miklb.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: miklb
 github_username:  miklb
 
