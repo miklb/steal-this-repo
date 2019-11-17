@@ -1,6 +1,8 @@
 # Steal This Repo
 
-If you are looking to get started with Jekyll-IndieWeb, you've found the right repository. This adjacent project will be kept up to date to allow someone to get started and gain the improvements and keep customizations to the theme.
+Welcome to Jekyll-Indieweb starter repository. The goal of this project was to provide someone without a web presence a quick and easy way to start using the basics of the [Indieweb](https://indiewebcamp.com)
+
+This adjacent project will be kept up to date to allow someone to get started and gain the improvements and keep customizations to the theme.
 
 Previously, if you forked Jekyll-IndieWeb you would have to port over any changes. With its conversion to a Jekyll theme, this project will start there, using a white listed plugin remote themes. Over time, I intend to add examples of GitHub Actions to build the site and send/received webmentions.
 
