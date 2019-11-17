@@ -26,6 +26,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: jekyll-indieweb
 github_username:  miklb
 
+paginate: 5
+
 # Can be over ridden with author: in Front Matter
 author: Jekyll IndieWeb
 bio: Writing a love letter to the web.
