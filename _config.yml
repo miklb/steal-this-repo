@@ -20,12 +20,17 @@
 
 title: Steal this Repo
 email: miklb@miklb.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Starter repo for using GitHub Pages with Jekyll IndieWeb theme
+description: "Starter repo for using GitHub Pages with Jekyll IndieWeb theme"
 baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: miklb
+twitter_username: jekyll-indieweb
 github_username:  miklb
+
+# Can be over ridden with author: in Front Matter
+author: Jekyll IndieWeb
+bio: Writing a love letter to the web.
+
+author_img: https://cdn.miklb.com/content/uploads/2019/11/16222044/wsi-imageoptim-steal-this-repo.png
 
 # Build settings
 remote_theme: miklb/jekyll-indieweb
