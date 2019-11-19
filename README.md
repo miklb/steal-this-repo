@@ -19,3 +19,6 @@ This web site template can be run with a standalone [Jekyll](https://jekyllrb.co
 ## Usage
 
 If you use the GitHub pages workflow described in the _Installation_ section, the usage of this template is fairly simple. Everytime you change something at your web site and commit this change using _git commit_ or the GitHub editor, Jekyll is triggered and your website is redeployed at the URL specified by your repository name (in the example above http://myindiewebpage.github.io).
+
+A note about remote themes — updates to the parent theme (Jekyll IndieWeb) will not automatically be added to your site. Since GitHub Pages serve static sites, you will need to trigger a new build to get the new changes. As time goes by, this should be less of an issue, but during development you may not see bug fixes until your site rebuilds. One hack is to use the `build:` line to your config file. Incrementing that number will make sure that GitHub Pages will trigger a full rebuild.colophon
+
