@@ -20,7 +20,7 @@ Also of note, this repo is a GitHub template repo. That means you can click the 
 
 ## Micropub
 ### Setting Up
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mikb/webpage-micropub-to-github)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/miklb/webpage-micropub-to-github)
 
 https://github.com/voxpelli/webpage-micropub-to-github
 ### Publishing
