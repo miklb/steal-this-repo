@@ -1,0 +1,26 @@
+{
+  "name": "steal-this-repo",
+  "version": "0.0.1",
+  "description": "MVP indieweb starter blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miklb/steal-this-repo.git"
+  },
+  "author": "Michael Bishop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miklb/steal-this-repo/issues"
+  },
+  "homepage": "https://github.com/miklb/steal-this-repo#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^5.0.0",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy-plugin-rss": "^2.0.2",
+    "luxon": "^3.5.0"
+  }
+}
