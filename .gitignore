@@ -45,3 +45,6 @@ yarn-error.log*
 # Temporary files
 *.tmp
 .tmp
+
+# Documentation
+CONVERSION-CHECKLIST.md

@@ -1,0 +1,38 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- 180×180 -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    {% metagen meta %}
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}/feed/feed.xml">
+    {% if page.url == "/" %}
+        <link rel="self" href="{{ site.url }}" type="text/html">
+        <link rel="authorization_endpoint" href="{{ site.url }}{{ site.indieauth.authorization_endpoint }}">
+        <link rel="token_endpoint" href="{{ site.url }}{{ site.indieauth.token_endpoint }}">
+        <link rel="micropub" href="{{ site.url }}{{ site.indieauth.micropub_endpoint }}">
+    {% endif %}
+    {% if site.social.mastodon %}
+        <link rel="me" href="{{ site.social.mastodon }}">
+    {% endif %}
+    {% if site.features.webmentions %}
+        <link rel="webmention" href="https://webmention.io/{{ site.domain }}/webmention">
+        <link rel="pingback" href="https://webmention.io/{{ site.domain }}/xmlrpc">
+    {% endif %}
+    <meta name="theme-color" content="#ea4125" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1D252C" media="(prefers-color-scheme: dark)">
+    <script>
+        // Set theme before page renders to avoid flash
+        const theme = localStorage.getItem('theme') || (
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light');
+        document
+            .documentElement
+            .setAttribute('data-theme', theme);
+    </script>
+</head>

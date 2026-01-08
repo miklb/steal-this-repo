@@ -1,19 +1,11 @@
 ---
-layout: default
-bodyClass: home
+layout: layouts/home.njk
+page-title: "Steal This Repo"
+eleventyNavigation:
+key: Home
+order: 1
 ---
-
-<div class="posts">
-  {% for post in paginator.posts %}
-  {% include post.html post=post %}
-  {% endfor %}
-</div>
-
-
-<div class="pagination" role="navigation">
-  {% if paginator.next_page %}
-  <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.github.url }}">Older</a> {% else %}
-  <span class="pagination-item older">Older</span> {% endif %} {% if paginator.previous_page %}
-  <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.github.url }}">Newer</a> {% else %}
-  <span class="pagination-item newer">Newer</span> {% endif %}
-</div>
+<!--
+    Content below this line will be displayed on the home page.
+-->
+An opinionated indieweb blog starter kit for [11ty](https://www.11ty.dev).

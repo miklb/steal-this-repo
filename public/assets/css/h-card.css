@@ -1,0 +1,170 @@
+/* H-Card / Usercard Styling - Based on jekyll-indieweb */
+
+/* Usercard wrapper */
+.h-card {
+  max-width: 800px;
+  margin: 0 auto var(--space-l);
+}
+
+/* Main usercard container - mobile first (stacked) */
+.usercard {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--dark-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar section */
+.usercard-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: var(--space-m);
+  padding-bottom: 0;
+}
+
+.usercard-avatar picture {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.usercard-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Body section */
+.usercard-body {
+  padding: var(--space-m);
+  background: var(--dark-gray);
+  color: var(--very-light-gray);
+  text-align: center;
+}
+
+.usercard-body .p-name {
+  font-size: var(--font-size-2);
+  font-weight: 700;
+  margin: 0 0 var(--space-xs);
+  color: #fff;
+}
+
+.usercard-body .p-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.usercard-body .p-name a:hover {
+  color: var(--brand);
+}
+
+.usercard-body .p-note {
+  margin: 0 0 var(--space-s);
+  color: var(--light-gray);
+  line-height: 1.6;
+}
+
+.usercard-body .p-locality {
+  margin: 0 0 var(--space-m);
+  font-size: var(--font-size--1);
+  color: var(--light-gray);
+}
+
+.usercard-body .p-locality svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  vertical-align: -0.125em;
+}
+
+/* Social Profiles */
+.profiles {
+  margin-top: var(--space-s);
+}
+
+.profiles ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profiles li {
+  margin: 0;
+}
+
+.profiles a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--gray);
+  border-radius: 4px;
+  color: var(--very-light-gray);
+  text-decoration: none;
+  font-size: var(--font-size--1);
+  transition: all 0.2s ease;
+}
+
+.profiles a:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+.profiles a svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+/* Tablet and up - side by side layout */
+@media (min-width: 550px) {
+  .usercard {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .usercard-avatar {
+    padding: var(--space-m);
+    padding-right: 0;
+  }
+
+  .usercard-avatar picture {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 8px;
+  }
+
+  .usercard-body {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .profiles ul {
+    justify-content: flex-start;
+  }
+}
+
+/* Larger screens - bigger avatar */
+@media (min-width: 768px) {
+  .usercard {
+    grid-template-columns: 250px 1fr;
+  }
+
+  .usercard-avatar {
+    min-height: 250px;
+  }
+}

@@ -1,0 +1,71 @@
+<section class="h-card">
+    <div class="usercard">
+        {% if site.author.photo %}
+            <div class="usercard-avatar">
+                <img class="u-photo" src="{{ site.author.photo }}" alt="{{ site.author.name }}">
+            </div>
+        {% endif %}
+
+        <div class="usercard-body">
+            <h2 class="p-name">
+                <a rel="me" class="u-url" href="{{ site.url }}">{{ site.author.name }}</a>
+            </h2>
+
+            {% if site.author.bio %}
+                <p class="p-note">{{ site.author.bio }}</p>
+            {% endif %}
+
+            {% if site.author.location %}
+                <p class="p-locality">
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{ site.author.location }}</p>
+            {% endif %}
+
+            {# Social profiles with rel="me" #}
+            {% if site.social.github or site.social.mastodon or site.social.bluesky or site.author.email %}
+                <nav class="profiles" aria-label="Social profiles">
+                    <ul>
+                        {% if site.social.github %}
+                            <li>
+                                <a href="https://github.com/{{ site.social.github }}" rel="me" title="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.mastodon %}
+                            <li>
+                                <a href="{{ site.social.mastodon }}" rel="me" title="Mastodon">
+                                    <i class="fa-brands fa-mastodon"></i>
+                                    <span>Mastodon</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.bluesky %}
+                            <li>
+                                <a href="https://bsky.app/profile/{{ site.social.bluesky }}" rel="me" title="Bluesky">
+                                    <i class="fa-brands fa-bluesky"></i>
+                                    <span>Bluesky</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.author.email %}
+                            <li>
+                                <a href="mailto:{{ site.author.email }}" class="email u-email" title="Email">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>Email</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="/feed/feed.xml" class="rss" title="RSS Feed">
+                                <i class="fa-solid fa-rss"></i>
+                                <span>RSS</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+</section>

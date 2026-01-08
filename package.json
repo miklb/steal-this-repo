@@ -1,0 +1,43 @@
+{
+  "name": "steal-this-repo",
+  "version": "0.0.1",
+  "description": "MVP indieweb starter blog",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:css && npx @11ty/eleventy",
+    "start": "npm run build:css && npx @11ty/eleventy --serve --quiet",
+    "build:css": "postcss public/assets/css/main.css -o _site/assets/css/main.css",
+    "watch:css": "postcss public/assets/css/main.css -w -o _site/assets/css/main.css",
+    "prod:css": "postcss public/assets/css/main.css -o _site/assets/css/main.css --no-map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miklb/steal-this-repo.git"
+  },
+  "author": "Michael Bishop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miklb/steal-this-repo/issues"
+  },
+  "homepage": "https://github.com/miklb/steal-this-repo#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-fetch": "^5.0.1",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@11ty/eleventy-navigation": "^1.0.5",
+    "@11ty/eleventy-plugin-rss": "^2.0.4",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@11ty/font-awesome": "^1.0.1",
+    "@jgarber/eleventy-plugin-postcss": "^1.0.1",
+    "cssnano": "^7.0.6",
+    "dotenv": "^16.4.7",
+    "eleventy-plugin-metagen": "^1.8.3",
+    "luxon": "^3.5.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-footnote": "^4.0.0",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.1",
+    "postcss-preset-env": "^10.1.2"
+  }
+}

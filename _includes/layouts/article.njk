@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ lang or site.lang or 'en' }}">
+
+    {% include "head.njk" %}
+
+    <body class="article">
+        <div class="site-container">
+            <div class="site-grid">
+                {% include "header.njk" %}
+                <main class="content">
+                    <article class="h-entry single-post">
+
+                        <h1 class="p-name">{{ title }}</h1>
+
+                        <div class="meta">
+                            <time class="dt-published postlist-date" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL yyyy") }}</time>
+                        </div>
+
+                        <div class="content-wrap e-content">
+
+                            {% if lede %}
+                                <p class="h3 lede p-summary e-bridgy-mastodon-content e-bridgy-bluesky-content">{{ lede }}</p>
+                            {% endif %}
+                            {{ content | safe }}
+                        </div>
+                    </article>
+                </main>
+                {% include "webmentions.njk" %}
+                {% include "footer.njk" %}
+            </div>
+        </div>
+        {% getBundle "fontawesome" %}
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="{{ lang or site.lang or 'en' }}">
+  {% include "head.njk" %}
+  <body>
+    <div class="site-container">
+      <div class="site-grid">
+        {% include "header.njk" %}
+        <main class="content">
+          <div class="archives">
+            <h1>{{ title }}</h1>
+            {% for post in collections.all | reverse %}
+              {% if post.url != page.url and post.data.permalink != false %}
+                <article class="archive-entry h-entry">
+                  <div class="archive-date">
+                    <time class="dt-published" datetime="{{ post.date | htmlDateString }}">
+                      {{ post.date | readableDate('MMM dd, yyyy') }}
+                    </time>
+                  </div>
+
+                  <div class="archive-content">
+                    {% if post.data.title %}
+                      <h2 class="archive-title p-name">
+                        <a class="u-url" href="{{ post.url }}">{{ post.data.title }}</a>
+                      </h2>
+                      {% if post.data.excerpt %}
+                        <p class="archive-excerpt p-summary">{{ post.data.excerpt }}</p>
+                      {% endif %}
+                    {% else %}
+                      <div class="archive-note e-content">
+                        {{ post.content | safe }}
+                        <a class="u-url" href="{{ post.url }}">
+                          <i class="fa-solid fa-link"></i>
+                        </a>
+                      </div>
+                    {% endif %}
+                  </div>
+                </article>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </main>
+        {% include "footer.njk" %}
+      </div>
+    </div>
+    {% getBundle "fontawesome" %}
+  </body>
+</html>

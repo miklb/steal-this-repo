@@ -1,0 +1,118 @@
+:root {
+  /* 
+   * CityLights Color Palette (from jekyll-indieweb)
+   * A clean, neutral gray palette with accent colors
+   * Customize by changing the brand color
+   */
+
+  /* Brand color - customize this! */
+  --brand: #ea4125;
+  --brand-hover: #c73620;
+
+  /* Grayscale palette - CityLights inspired */
+  --very-light-gray: #b7c5d3;
+  --light-gray: #718ca1;
+  --gray: #41505e;
+  --dark-gray: #333f4a;
+  --very-dark-gray: #1d252c;
+
+  /* Accent colors */
+  --color-success: #8bd49c;
+  --color-info: #5ec4ff;
+  --color-warning: #e27e8d;
+  --color-accent: #539afc;
+
+  /* Semantic mappings for light mode */
+  --text-primary: var(--very-dark-gray);
+  --text-secondary: var(--gray);
+  --text-muted: var(--light-gray);
+  --bg-body: #fff;
+  --bg-surface: var(--very-light-gray);
+  --bg-header: var(--very-dark-gray);
+  --bg-footer: var(--dark-gray);
+  --border-color: var(--very-light-gray);
+  --link-color: var(--brand);
+  --link-hover: var(--brand-hover);
+
+  /* Legacy variable mappings for compatibility */
+  --text1: var(--text-primary);
+  --text2: var(--text-secondary);
+  --surface1: var(--bg-body);
+  --surface2: var(--bg-surface);
+  --surface3: var(--very-light-gray);
+  --surface4: var(--light-gray);
+
+  /*  This theme utilzes fluid type using Utopia with the base font size at 22px on desktop.
+@link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,22,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+*/
+  --font-size--2: clamp(0.7813rem, 0.7469rem + 0.1717vw, 0.88rem);
+  --font-size--1: clamp(0.9375rem, 0.881rem + 0.2826vw, 1.1rem);
+  --font-size-0: clamp(1.125rem, 1.038rem + 0.4348vw, 1.375rem);
+  --font-size-1: clamp(1.35rem, 1.2217rem + 0.6413vw, 1.7188rem);
+  --font-size-2: clamp(1.62rem, 1.4362rem + 0.919vw, 2.1484rem);
+  --font-size-3: clamp(1.944rem, 1.6861rem + 1.2896vw, 2.6855rem);
+  --font-size-4: clamp(2.3328rem, 1.9766rem + 1.7811vw, 3.3569rem);
+  --font-size-5: clamp(2.7994rem, 2.3135rem + 2.4292vw, 4.1962rem);
+
+  --space-xs: clamp(0.875rem, 0.8233rem + 0.2586vw, 1.0625rem);
+  --space-s: clamp(1.125rem, 1.056rem + 0.3448vw, 1.375rem);
+  --space-m: clamp(1.6875rem, 1.5841rem + 0.5172vw, 2.0625rem);
+  --space-l: clamp(2.25rem, 2.1121rem + 0.6897vw, 2.75rem);
+  --space-xl: clamp(3.375rem, 3.1681rem + 1.0345vw, 4.125rem);
+
+  /* Default 12 column fluid grid.
+        @link https://utopia.fyi/grid/calculator?c=320,18,1.2,1240,22,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  */
+  --grid-max-width: 85.25rem;
+  --grid-gutter: var(
+    --space-s-l,
+    clamp(1.125rem, 0.6269rem + 2.4904vw, 2.75rem)
+  );
+  --grid-columns: 12;
+
+  /* 
+    System font stacks - built for speed
+    https://github.com/system-fonts/modern-font-stacks
+    */
+  --font-primary: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
+  --font-secondary: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+  --line-height: 1.75;
+}
+
+/* Dark mode - supports system preference and manual toggle */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --text-primary: var(--very-light-gray);
+    --text-secondary: var(--light-gray);
+    --text-muted: var(--gray);
+    --bg-body: var(--very-dark-gray);
+    --bg-surface: var(--dark-gray);
+    --bg-header: var(--very-dark-gray);
+    --bg-footer: var(--dark-gray);
+    --border-color: var(--gray);
+
+    /* Update legacy mappings */
+    --text1: var(--text-primary);
+    --text2: var(--text-secondary);
+    --surface1: var(--bg-body);
+    --surface2: var(--bg-surface);
+  }
+}
+
+/* Manual dark mode override */
+:root[data-theme="dark"] {
+  --text-primary: var(--very-light-gray);
+  --text-secondary: var(--light-gray);
+  --text-muted: var(--gray);
+  --bg-body: var(--very-dark-gray);
+  --bg-surface: var(--dark-gray);
+  --bg-header: var(--very-dark-gray);
+  --bg-footer: var(--dark-gray);
+  --border-color: var(--gray);
+
+  --text1: var(--text-primary);
+  --text2: var(--text-secondary);
+  --surface1: var(--bg-body);
+  --surface2: var(--bg-surface);
+}
