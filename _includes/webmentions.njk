@@ -1,0 +1,130 @@
+{% if webmentions and webmentions.children %}
+  <section class="webmentions">
+    <h2>Reactions</h2>
+    {% set webmentionUrl = site.url ~ page.url %}
+    {% set filteredWebmentions = webmentions.children | selectattr("wm-target", "equalto", webmentionUrl) | list %}
+    {% set likes = filteredWebmentions | selectattr("wm-property", "equalto", "like-of") | list %}
+    {% set likeSize = likes | length %}
+    {% if likeSize > 0 %}
+      <div class="webmentions__facepile">
+        <h3>{{ likeSize }}
+          Like{% if likesSize != 1 %}s{% endif %}
+        </h3>
+
+        {% for webmention in likes %}
+
+          {% if webmention.url != "" %}
+            <a class="h-card u-url link-u-exempt" href="{{ webmention.url }}" target="_blank" rel="noopener noreferrer">
+            {% endif %}
+
+            {% if webmention.author.photo != "" %}
+              <img src="{{ webmention.author.photo }}" alt="{{ webmention.author.name }}" width="48" height="48" loading="lazy">
+            {% else %}
+              <img class="webmention__author__photo" src="{{ '/assets/img/webmention.svg' | url }}" alt="" width="48" height="48">
+            {% endif %}
+
+            {% if webmention.url != "" %}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% set reposts = filteredWebmentions | selectattr("wm-property", "equalto", "repost-of") | list %}
+    {% set repostSize = reposts | length %}
+    {% if repostSize > 0 %}
+      <div class="webmentions__facepile">
+        <h3>{{ repostSize }}
+          Repost{% if repostSize != 1 %}s{% endif %}
+        </h3>
+        {% for webmention in reposts %}
+
+          {% if webmention.url != "" %}
+            <a class="h-card u-url link-u-exempt" href="{{ webmention.url }}" target="_blank" rel="noopener noreferrer">
+            {% endif %}
+
+            {% if webmention.author.photo != ""%}
+              <img src="{{ webmention.author.photo }}" alt="{{ webmention.author.name }}" width="48" height="48" loading="lazy">
+            {% else %}
+              <img class="webmention__author__photo" src="{{ '/assets/img/webmention.svg' | url }}" alt="" width="48" height="48">
+            {% endif %}
+
+            {% if webmention.url != "" %}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% set replies = filteredWebmentions | selectattr("wm-property", "equalto", "in-reply-to") | list %}
+
+    {% set replySize = replies | length %}
+    {% if replySize > 0 %}
+      {% for webmention in replies %}
+        <article class="webmention" id="webmention-{{ webmention['wm-id'] }}">
+          <div class="webmention__meta">
+            {% if webmention.author %}
+              {% if webmention.author.photo != "" %}
+                <img src="{{ webmention.author.photo }}" alt="{{ webmention.author.name }}" width="48" height="48" loading="lazy">
+              {% else %}
+                <img src="{{ '/assets/img/webmention.svg' | url }}" alt="" width="48" height="48">
+              {% endif %}
+              <span>
+                <a class="h-card u-url" {% if webmention.url %} href="{{ webmention.url }}" {% endif %} target="_blank" rel="noopener noreferrer">
+                  <strong class="p-name">{{ webmention.author.name }}</strong>
+                </a>
+              </span>
+            {% else %}
+              <span>
+                <strong>Anonymous</strong>
+              </span>
+            {% endif %}
+            {% if webmention.published %}
+              <time class="postlist-date" datetime="{{ webmention.published }}">
+                {{ webmention.published | readableDate("ccc, LLL dd, yyyy") }}
+              </time>
+            {% endif %}
+          </div>
+          <div>
+            {{ webmention.content.text }}
+          </div>
+        </article>
+      {% endfor %}
+    {% endif %}
+    {% set mentions = filteredWebmentions | selectattr("wm-property", "equalto", "mention-of") | list %}
+
+    {% set replySize = mentions | length %}
+    {% if replySize > 0 %}
+      {% for webmention in mentions %}
+        <h3>Mentions/Pingbacks</h3>
+        <article class="webmention" id="webmention-{{ webmention['wm-id'] }}">
+          <div class="webmention__meta">
+            {% if webmention.author %}
+              {% if webmention.author.photo != "" %}
+                <img src="{{ webmention.author.photo }}" alt="{{ webmention.author.name }}" width="48" height="48" loading="lazy">
+              {% else %}
+                <img src="/assets/img/webmention.svg" alt="" width="48" height="48">
+              {% endif %}
+              <span>
+                <a class="h-card u-url" {% if webmention.url %} href="{{ webmention.url }}" {% endif %} target="_blank" rel="noopener noreferrer">
+                  <span class="p-name">{{ webmention.url }}</span></a>
+              </span>
+            {% else %}
+              <span>
+                <strong>Anonymous</strong>
+              </span>
+            {% endif %}
+            {% if webmention.published %}
+              <time class="postlist-date" datetime="{{ webmention.published }}">
+                {{ webmention.published | readableDate("ccc, LLL dd, yyyy") }}
+              </time>
+            {% endif %}
+          </div>
+          <div>
+            {{ webmention.content.text }}
+          </div>
+        </article>
+      {% endfor %}
+    {% endif %}
+
+  </section>
+{% endif %}

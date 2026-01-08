@@ -1,0 +1,32 @@
+.container {
+    max-width: var(--grid-max-width);
+    padding-inline: var(--grid-gutter);
+    margin-inline: auto;
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--grid-gutter);
+    grid-template-columns: repeat(var(--grid-columns), [col-start] 1fr);
+    max-width: calc(1px*var(--live-container));
+  }
+
+  .col-fourth {
+	grid-column: auto / span 3;
+}
+
+.col-third {
+	grid-column: auto / span 4;
+}
+
+.col-two-thirds {
+	grid-column: auto / span 8;
+}
+
+.col-half {
+	grid-column: auto / span 6;
+}
+
+.col-three-fourths {
+	grid-column: auto / span 9;
+}

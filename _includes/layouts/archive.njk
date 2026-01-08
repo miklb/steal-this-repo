@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="{{ lang or site.lang or 'en' }}">
+
+  {% include "head.njk" %}
+
+  <body>
+    <div class="site-container">
+      <div class="site-grid">
+        {% include "header.njk" %}
+        <main class="content h-feed">
+          <div class="archives inner-grid">
+            <h1>Archives</h1>
+            {%- for post in collections.all reversed -%}
+              <article class=" inner-grid h-entry">
+                <header>
+
+                  {% if post.data.title %}
+                    <h2 class="p-name">
+                      <a class="u-url" href="{{ post.url }}">
+                        {{ post.data.title }}
+                      </a>
+                    </h2>
+                  {% else %}
+                    <a class="u-url" href="{{ post.url }}">
+                      #
+                    </a>
+                  {% endif %}
+                </header>
+                <div class="meta">
+                  <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
+                    {{ post.date | readableDate("LLLL yyyy") }}
+                  </time>
+                </div>
+
+                <div class="content-wrap e-content fluid-type">
+
+                  {% if post.data.excerpt %}
+                    <p class="p-summary">
+                      {{ post.data.excerpt }}
+                    </p>
+                  {%  else %}
+                    {{ post.content }}
+                  {% endif %}
+
+                </div>
+              </article>
+            {%- endfor -%}
+
+          </div>
+        </main>
+        {% include "footer.njk" %}
+      </div>
+    </div>
+  </body>
+</html>
