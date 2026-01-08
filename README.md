@@ -23,6 +23,10 @@ Minimalistic, semantic, and easy to customize.
 
 ### Deploy to Netlify
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/miklb/steal-this-repo)
+
+Click the button above to deploy your own copy. You'll be prompted to configure all necessary environment variables during the setup process.
+
 ### Manual Setup
 
 ```bash
@@ -59,10 +63,20 @@ export default {
   },
 
   social: {
+    twitter: "yourusername",
     github: "yourusername",
+    instagram: "yourusername",
     mastodon: "https://mastodon.social/@yourusername",
     bluesky: "yourdomain.com",
+    facebook: "https://facebook.com/yourusername",
+    linkedin: "https://linkedin.com/in/yourusername",
+    tumblr: "https://yourusername.tumblr.com",
+    flickr: "yourusername",
+    foursquare: "yourusername",
   },
+
+  // Note: All social fields are optional. Only populate the ones you want to display.
+  // Empty values will not appear in your h-card.
 };
 ```
 
@@ -83,6 +97,42 @@ The entire color scheme is generated from a single brand color. Edit `public/ass
 - Red: 0 | Orange: 30 | Yellow: 60 | Green: 120
 - Cyan: 180 | Blue: 220 | Purple: 270 | Pink: 330
 
+### Adding Custom Social Platforms
+
+To add a social platform not listed above:
+
+1. **Add to configuration** - Edit `_data/site.js`:
+
+   ```javascript
+   social: {
+     // ... existing platforms
+     yourplatform: process.env.YOURPLATFORM_URL || "",
+   }
+   ```
+
+2. **Add environment variable prompt** - Edit `netlify.toml`:
+
+   ```toml
+   [template.environment]
+   # ... existing variables
+   YOURPLATFORM_URL = "Your platform profile URL (optional)"
+   ```
+
+3. **Update h-card template** - Edit `_includes/h-card.njk`:
+
+   ```nunjucks
+   {% if site.social.yourplatform %}
+     <li>
+       <a href="{{ site.social.yourplatform }}" rel="me" title="YourPlatform">
+         <i class="fa-brands fa-yourplatform"></i>
+         <span>YourPlatform</span>
+       </a>
+     </li>
+   {% endif %}
+   ```
+
+4. **Find icons** at [Font Awesome](https://fontawesome.com/search?o=r&m=free) - use brand icons for social platforms
+
 ### Netlify Environment Variables
 
 Set these in your Netlify dashboard under **Site settings → Environment variables**:
@@ -90,11 +140,35 @@ Set these in your Netlify dashboard under **Site settings → Environment variab
 | Variable              | Required        | Description                                    |
 | --------------------- | --------------- | ---------------------------------------------- |
 | `ME`                  | Yes             | Your site URL (e.g., `https://yourdomain.com`) |
+| `AUTHOR_NAME`         | Yes             | Your name                                      |
+| `AUTHOR_EMAIL`        | Yes             | Your email address                             |
+| `AUTHOR_LOCATION`     | Optional        | Your location                                  |
+| `TWITTER_USERNAME`    | Optional        | Twitter username (without @)                   |
+| `GITHUB_USERNAME`     | Optional        | GitHub username                                |
+| `INSTAGRAM_USERNAME`  | Optional        | Instagram username                             |
+| `MASTODON_URL`        | Optional        | Full Mastodon profile URL                      |
+| `BLUESKY_HANDLE`      | Optional        | Bluesky handle (your-domain.com)               |
+| `FACEBOOK_URL`        | Optional        | Full Facebook profile URL                      |
+| `LINKEDIN_URL`        | Optional        | Full LinkedIn profile URL                      |
+| `TUMBLR_URL`          | Optional        | Full Tumblr blog URL                           |
+| `FLICKR_USERNAME`     | Optional        | Flickr username                                |
+| `FOURSQUARE_USERNAME` | Optional        | Foursquare username                            |
 | `GITHUB_TOKEN`        | For Micropub    | GitHub Personal Access Token with `repo` scope |
-| `GITHUB_USER`         | For Micropub    | Your GitHub username                           |
+| `GITHUB_USER`         | For Micropub    | Your GitHub username (for Micropub)            |
 | `GITHUB_REPO`         | For Micropub    | Repository name                                |
 | `TOKEN_ENDPOINT`      | For Micropub    | `https://tokens.indieauth.com/token`           |
 | `WEBMENTION_IO_TOKEN` | For Webmentions | Token from webmention.io                       |
+
+#### Post-Deploy Webhook
+
+To enable automatic syndication URL capture:
+
+1. Go to **Netlify Dashboard → Site settings → Build & deploy → Deploy notifications**
+2. Click **Add notification → Outgoing webhook**
+3. **Event to listen for:** Deploy succeeded
+4. **URL to notify:** `https://your-site.netlify.app/post-deploy`
+
+This webhook triggers the post-deploy function that sends webmentions to Bridgy and commits syndication URLs back to your posts.
 
 ## Content Management
 
@@ -182,7 +256,9 @@ npm run watch:css
 - **CSS:** Native CSS with PostCSS
 - **Hosting:** [Netlify](https://www.netlify.com/)
 - **Micropub:** [@benjifs/micropub](https://github.com/benjifs/serverless-micropub)
-- **Icons:** [@11ty/eleventy-plugin-bundle](https://github.com/11ty/eleventy-plugin-bundle) with Font Awesome
+- **Webmentions:** [netlify-plugin-webmentions](https://github.com/miklb/netlify-plugin-webmentions) (forked for better error handling)
+- **Post-Deploy Syndication:** [netlify-post-deploy-syndication](https://github.com/miklb/netlify-post-deploy-syndication)
+- **Icons:** [@11ty/font-awesome](https://github.com/11ty/eleventy-font-awesome)
 
 ## License
 

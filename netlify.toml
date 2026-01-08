@@ -1,0 +1,60 @@
+[build]
+publish = "_site"
+command = "npm run build"
+
+# Template environment variables - prompts users during "Deploy to Netlify"
+[template.environment]
+ME = "Your site URL (e.g., https://yourdomain.com)"
+URL = "Your site URL (same as ME)"
+DOMAIN = "Your domain (e.g., yourdomain.com)"
+AUTHOR_NAME = "Your name"
+AUTHOR_EMAIL = "Your email address"
+AUTHOR_LOCATION = "Your location (optional)"
+TWITTER_USERNAME = "Your Twitter username (optional)"
+GITHUB_USERNAME = "Your GitHub username"
+INSTAGRAM_USERNAME = "Your Instagram username (optional)"
+MASTODON_URL = "Your Mastodon profile URL (optional)"
+BLUESKY_HANDLE = "Your Bluesky handle (optional)"
+FACEBOOK_URL = "Your Facebook profile URL (optional)"
+LINKEDIN_URL = "Your LinkedIn profile URL (optional)"
+TUMBLR_URL = "Your Tumblr blog URL (optional)"
+FLICKR_USERNAME = "Your Flickr username (optional)"
+FOURSQUARE_USERNAME = "Your Foursquare username (optional)"
+GITHUB_TOKEN = "GitHub Personal Access Token with repo scope (for Micropub)"
+GITHUB_USER = "Your GitHub username (for Micropub)"
+GITHUB_REPO = "Repository name (for Micropub)"
+TOKEN_ENDPOINT = "IndieAuth token endpoint (default: https://tokens.indieauth.com/token)"
+WEBMENTION_IO_TOKEN = "Webmention.io API token (optional)"
+
+# Micropub endpoint
+[[redirects]]
+from = "/micropub"
+to = "/.netlify/functions/micropub"
+status = 200
+
+# Media endpoint
+[[redirects]]
+from = "/media"
+to = "/.netlify/functions/media"
+status = 200
+
+# Post-deploy webhook endpoint
+[[redirects]]
+from = "/post-deploy"
+to = "/.netlify/functions/post-deploy"
+status = 200
+
+# Bridgy Fed redirects for ActivityPub discovery
+[[redirects]]
+from = "/.well-known/host-meta*"
+to = "https://fed.brid.gy/.well-known/host-meta:splat"
+status = 302
+
+[[redirects]]
+from = "/.well-known/webfinger*"
+to = "https://fed.brid.gy/.well-known/webfinger"
+status = 302
+
+# Plugin for sending webmentions from content links
+[[plugins]]
+package = "netlify-plugin-webmentions"

@@ -5,52 +5,20 @@
 class ThemeToggle extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    // Don't use shadow DOM so we can access Font Awesome icons
   }
 
   connectedCallback() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     
-    this.shadowRoot.innerHTML = `
-      <style>
-        :host {
-          display: inline-block;
-        }
-        
-        button {
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0.5rem;
-          color: var(--text1);
-          font-size: 1.25rem;
-          line-height: 1;
-          display: flex;
-          align-items: center;
-          transition: transform 0.2s ease;
-        }
-        
-        button:hover {
-          transform: scale(1.1);
-        }
-        
-        button:focus-visible {
-          outline: 2px solid var(--brand);
-          outline-offset: 2px;
-          border-radius: 4px;
-        }
-        
-        .sun { display: ${currentTheme === 'light' ? 'none' : 'block'}; }
-        .moon { display: ${currentTheme === 'light' ? 'block' : 'none'}; }
-      </style>
-      
-      <button aria-label="Toggle theme" title="Toggle dark/light mode">
-        <span class="sun" aria-hidden="true">☀️</span>
-        <span class="moon" aria-hidden="true">🌙</span>
+    this.innerHTML = `
+      <button aria-label="Toggle theme" title="Toggle dark/light mode" class="theme-toggle-btn">
+        <svg class="sun" aria-hidden="true" style="display: ${currentTheme === 'light' ? 'none' : 'block'}; width: 1.25em; height: 1.25em;"><use href="#fas-fa-sun"></use></svg>
+        <svg class="moon" aria-hidden="true" style="display: ${currentTheme === 'light' ? 'block' : 'none'}; width: 1.25em; height: 1.25em;"><use href="#fas-fa-moon"></use></svg>
       </button>
     `;
 
-    this.shadowRoot.querySelector('button').addEventListener('click', () => {
+    this.querySelector('button').addEventListener('click', () => {
       this.toggleTheme();
     });
   }
@@ -64,8 +32,8 @@ class ThemeToggle extends HTMLElement {
     localStorage.setItem('theme', newTheme);
     
     // Update button display
-    const sun = this.shadowRoot.querySelector('.sun');
-    const moon = this.shadowRoot.querySelector('.moon');
+    const sun = this.querySelector('.sun');
+    const moon = this.querySelector('.moon');
     
     if (newTheme === 'light') {
       sun.style.display = 'none';

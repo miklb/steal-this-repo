@@ -157,21 +157,32 @@ a:hover {
 
 /* Theme toggle button */
 theme-toggle {
-  display: block;
+  display: inline-block;
 }
 
-theme-toggle button {
-  background: transparent;
-  border: 1px solid var(--light-gray);
-  border-radius: 4px;
-  padding: 0.5rem;
+.theme-toggle-btn {
+  background: none;
+  border: none;
   cursor: pointer;
-  color: var(--very-light-gray);
-  font-size: var(--font-size--1);
-  transition: all 0.2s ease;
+  padding: 0.5rem;
+  color: var(--text1);
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
 }
 
-theme-toggle button:hover {
-  background: var(--gray);
-  border-color: var(--very-light-gray);
+.theme-toggle-btn svg {
+  fill: currentColor;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
 }

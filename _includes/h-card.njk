@@ -22,14 +22,30 @@
             {% endif %}
 
             {# Social profiles with rel="me" #}
-            {% if site.social.github or site.social.mastodon or site.social.bluesky or site.author.email %}
+            {% if site.social.twitter or site.social.github or site.social.instagram or site.social.mastodon or site.social.bluesky or site.social.facebook or site.social.linkedin or site.social.tumblr or site.social.flickr or site.social.foursquare or site.author.email %}
                 <nav class="profiles" aria-label="Social profiles">
                     <ul>
+                        {% if site.social.twitter %}
+                            <li>
+                                <a href="https://twitter.com/{{ site.social.twitter }}" rel="me" title="Twitter">
+                                    <i class="fa-brands fa-twitter"></i>
+                                    <span>Twitter</span>
+                                </a>
+                            </li>
+                        {% endif %}
                         {% if site.social.github %}
                             <li>
                                 <a href="https://github.com/{{ site.social.github }}" rel="me" title="GitHub">
                                     <i class="fa-brands fa-github"></i>
                                     <span>GitHub</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.instagram %}
+                            <li>
+                                <a href="https://instagram.com/{{ site.social.instagram }}" rel="me" title="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>Instagram</span>
                                 </a>
                             </li>
                         {% endif %}
@@ -46,6 +62,46 @@
                                 <a href="https://bsky.app/profile/{{ site.social.bluesky }}" rel="me" title="Bluesky">
                                     <i class="fa-brands fa-bluesky"></i>
                                     <span>Bluesky</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.facebook %}
+                            <li>
+                                <a href="{{ site.social.facebook }}" rel="me" title="Facebook">
+                                    <i class="fa-brands fa-facebook"></i>
+                                    <span>Facebook</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.linkedin %}
+                            <li>
+                                <a href="{{ site.social.linkedin }}" rel="me" title="LinkedIn">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.tumblr %}
+                            <li>
+                                <a href="{{ site.social.tumblr }}" rel="me" title="Tumblr">
+                                    <i class="fa-brands fa-tumblr"></i>
+                                    <span>Tumblr</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.flickr %}
+                            <li>
+                                <a href="https://www.flickr.com/photos/{{ site.social.flickr }}" rel="me" title="Flickr">
+                                    <i class="fa-brands fa-flickr"></i>
+                                    <span>Flickr</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social.foursquare %}
+                            <li>
+                                <a href="https://foursquare.com/{{ site.social.foursquare }}" rel="me" title="Foursquare">
+                                    <i class="fa-brands fa-foursquare"></i>
+                                    <span>Foursquare</span>
                                 </a>
                             </li>
                         {% endif %}
