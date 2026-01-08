@@ -1,5 +1,9 @@
 # Steal This Repo
 
+## WORK IN PROGRESS
+
+This is an incomplete project, contributions welcome while work is completed to implement the netlify/webmention support.
+
 An IndieWeb-ready blog template powered by [Eleventy](https://www.11ty.dev/) and designed to deploy to Netlify.
 
 Minimalistic, semantic, and easy to customize.
@@ -18,8 +22,6 @@ Minimalistic, semantic, and easy to customize.
 ## Quick Start
 
 ### Deploy to Netlify
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/miklb/steal-this-repo)
 
 ### Manual Setup
 
@@ -48,19 +50,19 @@ export default {
   title: "Your Blog Title",
   tagline: "A short description",
   url: "https://yourdomain.com",
-  
+
   author: {
     name: "Your Name",
     bio: "A short bio about yourself",
     photo: "/assets/img/avatar.jpg",
-    location: "City, Country"
+    location: "City, Country",
   },
-  
+
   social: {
     github: "yourusername",
     mastodon: "https://mastodon.social/@yourusername",
-    bluesky: "yourdomain.com"
-  }
+    bluesky: "yourdomain.com",
+  },
 };
 ```
 
@@ -70,13 +72,14 @@ The entire color scheme is generated from a single brand color. Edit `public/ass
 
 ```css
 :root {
-  --brand-hue: 220;        /* 0-360: Change to any color */
+  --brand-hue: 220; /* 0-360: Change to any color */
   --brand-saturation: 60%; /* Color intensity */
-  --brand-lightness: 50%;  /* Brightness */
+  --brand-lightness: 50%; /* Brightness */
 }
 ```
 
 **Quick Color Reference:**
+
 - Red: 0 | Orange: 30 | Yellow: 60 | Green: 120
 - Cyan: 180 | Blue: 220 | Purple: 270 | Pink: 330
 
@@ -84,20 +87,21 @@ The entire color scheme is generated from a single brand color. Edit `public/ass
 
 Set these in your Netlify dashboard under **Site settings → Environment variables**:
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `ME` | Yes | Your site URL (e.g., `https://yourdomain.com`) |
-| `GITHUB_TOKEN` | For Micropub | GitHub Personal Access Token with `repo` scope |
-| `GITHUB_USER` | For Micropub | Your GitHub username |
-| `GITHUB_REPO` | For Micropub | Repository name |
-| `TOKEN_ENDPOINT` | For Micropub | `https://tokens.indieauth.com/token` |
-| `WEBMENTION_IO_TOKEN` | For Webmentions | Token from webmention.io |
+| Variable              | Required        | Description                                    |
+| --------------------- | --------------- | ---------------------------------------------- |
+| `ME`                  | Yes             | Your site URL (e.g., `https://yourdomain.com`) |
+| `GITHUB_TOKEN`        | For Micropub    | GitHub Personal Access Token with `repo` scope |
+| `GITHUB_USER`         | For Micropub    | Your GitHub username                           |
+| `GITHUB_REPO`         | For Micropub    | Repository name                                |
+| `TOKEN_ENDPOINT`      | For Micropub    | `https://tokens.indieauth.com/token`           |
+| `WEBMENTION_IO_TOKEN` | For Webmentions | Token from webmention.io                       |
 
 ## Content Management
 
 ### Posting via Micropub
 
 Use any Micropub client to post:
+
 - **Web:** [Quill](https://quill.p3k.io)
 - **Mobile:** [Indigenous](https://indigenous.realize.be) (iOS/Android)
 - **Desktop:** [iA Writer](https://ia.net/writer) (macOS/iOS)
