@@ -4,3 +4,4 @@ package-lock.json
 .cache
 
 .DS_Store
+CONVERSION-CHECKLIST.md
