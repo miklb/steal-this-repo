@@ -1,5 +1,47 @@
+# Build output
 _site
+
+# Legacy Jekyll files
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# Dependencies
+node_modules
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache
+.cache
+.eleventy-cache
+
+# Temporary files
+*.tmp
+.tmp
