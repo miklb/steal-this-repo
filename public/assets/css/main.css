@@ -1,17 +1,9 @@
-@charset "UTF-8";
-@layer reset, utilities, layout, theme, type;
-
 @import "variables.css";
-@import "remedy.css" layer(reset);
-@import "utilities.css" layer(utilities);
-@import "layout.css" layer(layout);
-@import "darkmode.css" layer(theme);
-@import "media.css" layer(theme);
-@import "theme.css" layer(theme);
-@import "typography.css" layer(type);
-
-/*
-* Declarations added below will override any classes
-* defined in the imported layers.
-*/
-
+@import "remedy.css";
+@import "utilities.css";
+@import "layout.css";
+@import "theme.css";
+@import "h-card.css";
+@import "darkmode.css";
+@import "typography.css";
+@import "media.css";
